@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:restaurant_finder/BLoC/bloc.dart';
 
+// Stores data and provides it to all of its children.
 // 1. Generic BlocProvider class to implement Bloc interface. Provider can only store Bloc objects.
 class BlocProvider<T extends Bloc> extends StatefulWidget {
   final Widget child;
@@ -24,11 +25,11 @@ class BlocProvider<T extends Bloc> extends StatefulWidget {
 }
 
 class _BlocProviderState extends State<BlocProvider> {
-  // 4. Use widget build method to pass-through to widget's child. No rendering.
+  // 4. Use widget build method to pass-through to widget's child. Does not render anything.
   @override
   Widget build(BuildContext context) => widget.child;
 
-  // 5. Reason provider inherits from StatefulWidget: To access the dispose method and close the stream.
+  // 5. Inherit from StatefulWidget to access the dispose method and close the stream.
   @override
   void dispose() {
     widget.bloc.dispose();

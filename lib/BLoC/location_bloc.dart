@@ -4,6 +4,8 @@ import 'package:restaurant_finder/BLoC/bloc.dart';
 
 import '../DataLayer/location.dart';
 
+// Managing the apps selected location
+
 class LocationBloc implements Bloc {
   Location _location;
   Location get selectedLocation => _location;

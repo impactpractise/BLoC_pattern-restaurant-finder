@@ -5,6 +5,8 @@ import 'package:restaurant_finder/BLoC/bloc.dart';
 import '../DataLayer/location.dart';
 import '../DataLayer/zomato_client.dart';
 
+// BloC to query the location
+
 class LocationQueryBloc implements Bloc {
   final _controller = StreamController<List<Location>>();
   final _client = ZomatoClient();
