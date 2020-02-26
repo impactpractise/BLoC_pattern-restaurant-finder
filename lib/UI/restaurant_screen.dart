@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:restaurant_finder/BLoC/bloc_provider.dart';
 import 'package:restaurant_finder/BLoC/restaurant_bloc.dart';
 import 'package:restaurant_finder/UI/favorite_screen.dart';
+import 'package:restaurant_finder/UI/location_screen.dart';
 import 'package:restaurant_finder/UI/restaurant_tile.dart';
 
 import '../DataLayer/location.dart';
@@ -15,17 +16,24 @@ class RestaurantScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text(location.title),
-          actions: <Widget>[
-            IconButton(
-              icon: Icon(Icons.favorite_border),
-              onPressed: () => Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (_) => FavoriteScreen())),
-            )
-          ],
-        ),
-        body: _buildSearch(context));
+      appBar: AppBar(
+        title: Text(location.title),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.favorite_border),
+            onPressed: () => Navigator.of(context)
+                .push(MaterialPageRoute(builder: (_) => FavoriteScreen())),
+          )
+        ],
+      ),
+      body: _buildSearch(context),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.edit_location),
+        onPressed: () => Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => LocationScreen(isFullScreenDialog: true),
+            fullscreenDialog: true)),
+      ),
+    );
   }
 
   Widget _buildSearch(BuildContext context) {
